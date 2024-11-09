@@ -28,10 +28,20 @@ srcs/
 ../mariadb/
 ../nginx
 
-
-DEBUG RGRAMATII
+SETUP WP
 //DL WP CLI
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 Run with
-php wp-cli.phar --info
+php wp-cli.phar --info:w
+
+
+MARIADB.SH
+Setup Service
+Create Database if not exist > Nom DB
+SHOW databases;
+
+
+docker exec mariadb mysql -uroot -p"${DB_ROOTPASS}" -e 'SELECT User, Host FROM mysql.user;'
+
+
