@@ -1,0 +1,37 @@
+Docker composer > Bim bam boum classico
+> Setup Docker Network pour les caméras
+> Fuck WP-CLI
+> Nginx & Mariadb mes gars sur
+
+
+> Nginx TLS1.2 (https only)
+> mariadb
+> Wordpress + phpfm (depend mariadb)
+
+Le docker network bridge de con
+
+WP USER > 1 admin & 1 random
+
+domain tarnaud@jsty.fr 
+classico tout dans le .env
+
+PATH Archi
+Makefile
+secrets/
+srcs/
+../.env
+../wordpress
+../../dockerfile
+../../conf/
+../../.dockerignore
+../../tools/
+../mariadb/
+../nginx
+
+
+DEBUG RGRAMATII
+//DL WP CLI
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+Run with
+php wp-cli.phar --info
