@@ -1,20 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: thomarna <thomarna@42angouleme.fr>         +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/09 18:33:55 by thomarna          #+#    #+#              #
-#    Updated: 2024/11/09 22:29:46 by thomarna         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 all: up
 
 up:
-	@mkdir -p /home/tarnaud/data/mariadb
-	@mkdir -p /home/tarnaud/data/wordpress
+	@mkdir -p ~/data/mariadb
+	@mkdir -p ~/data/wordpress
 	@docker compose -f ./srcs/docker-compose.yml up -d
 down:
 	@docker compose -f ./srcs/docker-compose.yml down -v
@@ -25,7 +13,8 @@ stop:
 status:
 	@docker ps
 fclean :
+		@rm -rf ~/data/
+		@docker network remove inception
+		@docker volume rm wordpress
 		@docker system prune -af
-		@rm -rf /home/tarnaud/data/
-
-re: fclean all
+re: stop fclean all
