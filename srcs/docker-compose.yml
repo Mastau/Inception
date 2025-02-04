@@ -27,6 +27,7 @@ services:
       - "9000"
     env_file:
       - .env
+    restart: unless-stopped
   mariadb:
     container_name: mariadb
     build: ./mariadb/
@@ -36,8 +37,10 @@ services:
       - mariadb:/var/lib/mysql
     expose:
       - "3306"
-    env_file:
-      - .env
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASS}
+    restart: unless-stopped
   nginx:
     container_name: nginx
     build: ./nginx/
@@ -50,10 +53,7 @@ services:
     depends_on:
       - wordpress
       - mariadb
-    env_file:
-      - .env
-    extra_hosts:
-      - "thomarna.42.fr:127.0.0.1"
+    restart: unless-stopped
 networks:
   inception:
     name: inception
